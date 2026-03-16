@@ -13,6 +13,12 @@ const initialContacts = [
 ];
 
 const App = () => {
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', isLight);
+  }, [isLight]);
+
   const [contacts, setContacts] = useState(() => {
     const saved = localStorage.getItem('contacts');
     return saved ? JSON.parse(saved) : initialContacts;
@@ -42,6 +48,10 @@ const App = () => {
   );
 
   return (
+    <>
+    <button className="theme-btn" onClick={() => setIsLight(p => !p)}>
+      {isLight ? '🌙 Dark' : '☀️ Light'}
+    </button>
     <div className={styles.container}>
       <h1 className={styles.title}>Phonebook</h1>
       <div className={styles.formWrapper}>
@@ -51,6 +61,7 @@ const App = () => {
       <SearchBox value={filter} onChange={setFilter} />
       <ContactList contacts={filteredContacts} onDelete={handleDeleteContact} />
     </div>
+    </>
   );
 };
 
