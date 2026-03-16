@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 import ContactForm from './components/ContactForm/ContactForm';
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
-import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import styles from './App.module.css';
 
 const initialContacts = [
@@ -26,20 +25,24 @@ const App = () => {
   }, [contacts]);
 
   const handleAddContact = ({ name, number }) => {
-    setContacts(prev => [...prev, { id: nanoid(), name, number }]);
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    setContacts(prev => [...prev, newContact]);
   };
 
   const handleDeleteContact = id => {
-    setContacts(prev => prev.filter(c => c.id !== id));
+    setContacts(prev => prev.filter(contact => contact.id !== id));
   };
 
-  const filteredContacts = contacts.filter(c =>
-    c.name.toLowerCase().includes(filter.toLowerCase())
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div className={styles.container}>
-      <ThemeToggle />
       <h1 className={styles.title}>Phonebook</h1>
       <div className={styles.formWrapper}>
         <ContactForm onAdd={handleAddContact} />

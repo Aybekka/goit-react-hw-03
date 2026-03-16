@@ -3,18 +3,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: var(--bg-dark);
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #e8e8e8;
+  transition: box-shadow 0.2s ease;
   min-width: 0;
   overflow: hidden;
 }
 
 .item:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .info {
@@ -37,18 +36,18 @@
 .name {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-main);
+  color: #1a1a1a;
 }
 
 .number {
   font-size: 12px;
-  color: var(--text-muted);
+  color: #6b6b6b;
 }
 
 .icon {
   flex-shrink: 0;
   font-size: 11px;
-  color: var(--accent);
+  color: #4f46e5;
 }
 
 .deleteBtn {
@@ -56,19 +55,14 @@
   padding: 4px 10px;
   border: none;
   border-radius: 6px;
-  background: linear-gradient(135deg, #f87171, #ef4444);
+  background-color: #ff4d4f;
   color: #fff;
   font-size: 12px;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .deleteBtn:hover {
-  opacity: 0.85;
-}
-
-.deleteBtn:active {
-  transform: scale(0.95);
+  background-color: #d9363e;
 }
