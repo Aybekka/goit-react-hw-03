@@ -9,6 +9,7 @@ React ve Formik kullanılarak geliştirilmiş kişi rehberi uygulaması. Kişi e
 - **Kişi silme** — Her karttan tek tıkla silme
 - **localStorage** — Kişiler sayfa yenilenmesinde korunur
 - **Duyarlı ızgara** — Ekran genişliğine göre 1'den 4 sütuna kadar otomatik düzen
+- **Tema geçişi** — Saate göre otomatik başlangıç (07:00–19:00 arası aydınlık, diğer saatler karanlık), manuel geçiş desteği
 
 ## Proje Yapısı
 
@@ -28,38 +29,42 @@ src/
     ├── ContactList/
     │   ├── ContactList.jsx
     │   └── ContactList.module.css
-    └── Contact/
-        ├── Contact.jsx
-        └── Contact.module.css
+    ├── Contact/
+    │   ├── Contact.jsx
+    │   └── Contact.module.css
+    └── ThemeToggle/
+        ├── ThemeToggle.jsx
+        └── ThemeToggle.module.css
 ```
 
 ## Bileşenler
 
-| Bileşen | Prop'lar | Açıklama |
-|---|---|---|
-| `App` | — | Kişi durumu, filtreleme ve localStorage senkronizasyonu |
-| `ContactForm` | `onAdd(fn)` | Formik + Yup doğrulamalı kişi ekleme formu |
-| `SearchBox` | `value`, `onChange` | İsme göre gerçek zamanlı filtreleme girişi |
-| `ContactList` | `contacts`, `onDelete` | Duyarlı CSS Grid kişi listesi |
-| `Contact` | `contact`, `onDelete` | `FaUser` / `FaPhone` ikonlu kişi kartı |
+| Bileşen       | Prop'lar               | Açıklama                                                |
+| ------------- | ---------------------- | ------------------------------------------------------- |
+| `App`         | —                      | Kişi durumu, filtreleme ve localStorage senkronizasyonu |
+| `ContactForm` | `onAdd(fn)`            | Formik + Yup doğrulamalı kişi ekleme formu              |
+| `SearchBox`   | `value`, `onChange`    | İsme göre gerçek zamanlı filtreleme girişi              |
+| `ContactList` | `contacts`, `onDelete` | Duyarlı CSS Grid kişi listesi                           |
+| `Contact`     | `contact`, `onDelete`  | `FaUser` / `FaPhone` ikonlu kişi kartı                  |
+| `ThemeToggle` | —                      | Saate dayalı otomatik başlangıçlı karanlık/aydınlık tema değiştirici |
 
 ## Form Doğrulama
 
 Formik ve Yup ile yönetilen form aşağıdaki kuralları uygular:
 
-| Alan | Kural |
-|---|---|
-| İsim | Zorunlu, 3–50 karakter |
+| Alan    | Kural                  |
+| ------- | ---------------------- |
+| İsim    | Zorunlu, 3–50 karakter |
 | Telefon | Zorunlu, 3–50 karakter |
 
 ## Duyarlı Izgara
 
-| Genişlik | Sütun Sayısı |
-|---|---|
-| `< 480px` | 1 |
-| `≥ 480px` | 2 |
-| `≥ 768px` | 3 |
-| `≥ 1024px` | 4 |
+| Genişlik   | Sütun Sayısı |
+| ---------- | ------------ |
+| `< 480px`  | 1            |
+| `≥ 480px`  | 2            |
+| `≥ 768px`  | 3            |
+| `≥ 1024px` | 4            |
 
 ## Başlarken
 
@@ -70,12 +75,12 @@ npm run dev
 
 ## Komutlar
 
-| Komut | Açıklama |
-|---|---|
-| `npm run dev` | Geliştirme sunucusunu başlatır |
-| `npm run build` | Prodüksiyon için derleme yapar |
+| Komut             | Açıklama                        |
+| ----------------- | ------------------------------- |
+| `npm run dev`     | Geliştirme sunucusunu başlatır  |
+| `npm run build`   | Prodüksiyon için derleme yapar  |
 | `npm run preview` | Prodüksiyon derlemesini önizler |
-| `npm run lint` | ESLint çalıştırır |
+| `npm run lint`    | ESLint çalıştırır               |
 
 ## Teknolojiler
 
